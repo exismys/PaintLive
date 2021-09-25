@@ -5,22 +5,18 @@ function setup() {
     socket = io.connect()
     socket.on("mousePos", (data) => {
         noStroke();
-        fill(255, 0, 0);
-        circle(data.x, data.y, 5);
+        fill(random(255), random(255), random(255), 100);
+        circle(data.x, data.y, 15);
     })
 }
 
-function mouseDragged() {
+function draw() {
     noStroke();
-    fill(255);
-    circle(mouseX, mouseY, 5);
+    fill(random(255), random(255), random(255), 100);
+    circle(mouseX, mouseY, 15);
     let data = {
         x: mouseX,
         y: mouseY
     }
     socket.emit("mousePos", data);
-}
-
-function draw() {
-    
 }
